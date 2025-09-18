@@ -1,3 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Shortcut Guru Design System - Dark theme focused keyboard shortcuts platform */
+
+@layer base {
+  :root {
+    /* Core Colors - Dark theme with vibrant accents */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    
+    /* Primary - Electric blue for shortcuts and CTAs */
+    --primary: 217 91% 60%;
+    --primary-foreground: 240 10% 3.9%;
+    
+    /* Secondary - Subtle gray for secondary elements */
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 64.9%;
+    
+    /* Accent - Purple for highlights and special elements */
+    --accent: 270 95% 75%;
+    --accent-foreground: 240 10% 3.9%;
+    
+    /* Success - Green for positive actions */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+    
+    /* Warning - Orange for warnings */
+    --warning: 38 92% 50%;
+    --warning-foreground: 240 10% 3.9%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 217 91% 60%;
+    
+    --radius: 0.75rem;
+    
+    /* Brand Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(270 95% 75%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(240 4% 16%) 0%, hsl(240 10% 3.9%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(270 95% 75%) 0%, hsl(217 91% 60%) 100%);
+    
+    /* Glow Effects */
+    --glow-primary: 0 0 20px hsl(217 91% 60% / 0.3);
+    --glow-accent: 0 0 20px hsl(270 95% 75% / 0.3);
+    --glow-success: 0 0 20px hsl(142 76% 36% / 0.3);
+    
+    /* Shadows */
+    --shadow-lg: 0 10px 30px -10px hsl(240 10% 3.9% / 0.3);
+    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.15);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Custom typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Keyboard key styling */
+  .kbd {
+    @apply inline-flex items-center justify-center px-2 py-1 text-xs font-mono font-medium;
+    @apply bg-muted rounded-md shadow-sm;
+    @apply text-muted-foreground min-w-[1.5rem] min-h-[1.5rem];
+    border: 1px solid hsl(var(--border));
+  }
+  
+  /* Gradient backgrounds */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+  
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+  
+  .glow-success {
+    box-shadow: var(--glow-success);
+  }
+  
+  /* Interactive animations */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: var(--glow-primary);
+  }
+  
+  /* Search input styling */
+  .search-input {
+    @apply bg-card focus:ring-primary focus:border-primary;
+    @apply transition-all duration-300;
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .search-input:focus {
+    box-shadow: var(--glow-primary);
+  }
+  
+  /* Command palette styling */
+  .command-palette {
+    @apply bg-card rounded-lg shadow-lg;
+    border: 1px solid hsl(var(--border));
+    backdrop-filter: blur(20px);
+    background: hsl(var(--card) / 0.8);
+  }
+  
+  /* Shortcut card animations */
+  .shortcut-card {
+    @apply bg-card rounded-lg p-4;
+    @apply hover-lift transition-all duration-300;
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .shortcut-card:hover {
+    @apply border-primary/50;
+    box-shadow: var(--shadow-glow);
+  }
+}
