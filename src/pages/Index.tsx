@@ -11,7 +11,7 @@ import { useShortcuts } from "../hooks/useShortcuts";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 
-const Index = () => {
+const index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -178,4 +178,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default index;
