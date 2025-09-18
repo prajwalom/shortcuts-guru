@@ -158,11 +158,11 @@ const Index = () => {
                     <ShortcutCard
                       key={shortcut.id}
                       title={shortcut.title}
-                      description={shortcut.description}
+                      description={shortcut.description ?? undefined}
                       shortcut={shortcut.shortcut_key}
                       platform={shortcut.platform}
-                      appName={shortcut.app_name}
-                      tags={shortcut.tags}
+                      appName={shortcut.app_name ?? undefined}
+                      tags={shortcut.tags ?? undefined}
                     />
                   ))}
                 </div>

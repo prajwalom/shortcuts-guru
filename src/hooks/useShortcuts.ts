@@ -4,12 +4,12 @@ import { supabase } from '../integrations/supabase/client';
 export interface Shortcut {
   id: string;
   title: string;
-  description?: string;
+  description?: string | null;
   shortcut_key: string;
   platform: string;
   category: string;
-  app_name?: string;
-  tags?: string[];
+  app_name?: string | null;
+  tags?: string[] | null;
 }
 
 interface UseShortcutsProps {
@@ -43,24 +43,24 @@ export const useShortcuts = ({
         .select('*')
         .order('title');
 
-      
+      // Apply search filter
       if (searchQuery) {
         query = query.or(
           `title.ilike.%${searchQuery}%,description.ilike.%${searchQuery}%,tags.cs.{${searchQuery}}`
         );
       }
 
-      
+      // Apply platform filter
       if (platforms.length > 0) {
         query = query.in('platform', platforms);
       }
 
-     
+      // Apply category filter
       if (categories.length > 0) {
         query = query.in('category', categories);
       }
 
-    
+      // Apply app filter
       if (apps.length > 0) {
         query = query.in('app_name', apps);
       }

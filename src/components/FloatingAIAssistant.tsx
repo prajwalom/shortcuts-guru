@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
-import { Sparkles} from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { AIChatDialog } from "../components/AIChatDialog";
 
 export const FloatingAIAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible] = useState(true);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      
+    
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         setIsOpen(true);
@@ -24,7 +24,7 @@ export const FloatingAIAssistant = () => {
 
   return (
     <>
-    
+     
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
         <Button
           onClick={() => setIsOpen(true)}
@@ -32,7 +32,6 @@ export const FloatingAIAssistant = () => {
         >
           <Sparkles className="w-6 h-6 text-white" />
         </Button>
-        
        
         <div className="bg-card/90 backdrop-blur-sm border border-border/50 rounded-lg px-3 py-2 shadow-lg">
           <p className="text-xs text-muted-foreground">

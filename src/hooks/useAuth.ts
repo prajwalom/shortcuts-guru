@@ -8,16 +8,17 @@ export const useAuth = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    
+    // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
+        void event; // mark as used to satisfy TS noUnusedLocals
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
       }
     );
 
-    
+    // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
