@@ -1,4 +1,3 @@
-/// <reference types="https://deno.land/x/deno_types/index.d.ts" />
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 // @ts-ignore - Deno runtime module
 import { serve } from "https://deno.land/std@0.208.0/http/server.ts";
@@ -11,7 +10,7 @@ const corsHeaders = {
     'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-serve(async (req) => {
+serve(async (req: Request) => {
     if (req.method === 'OPTIONS') {
         return new Response(null, { headers: corsHeaders });
     }
